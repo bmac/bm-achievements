@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from cowpuncher.achievements.models import Achievement
+from bm-achievements.models import Achievement
 from django.template import RequestContext
 
 def achievements_all(request):
