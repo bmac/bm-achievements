@@ -3,14 +3,11 @@ from bm-achievements.models import Achievement
 from django.template import RequestContext
 
 def achievements_all(request):
-
-    return render_to_response("achievements/achievement_list.html", {
-        "queryset" : Achievement.objects.all().order_by("xp")
-    },  context_instance=RequestContext(request))
+    queryset = Achievement.objects.all().order_by("xp")
+    return render_to_response("achievements/achievement_list.html", locals(),  context_instance=RequestContext(request))
 
 
 def achievement(request, slug):
-    a = get_object_or_404(Achievement, slug=slug)
-    
-    return render_to_response('achievements/achievement.html', {'achievement': a},  context_instance=RequestContext(request))
+    achievement = get_object_or_404(Achievement, slug=slug)
+    return render_to_response('achievements/achievement.html', locals(),  context_instance=RequestContext(request))
     
